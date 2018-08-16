@@ -90,6 +90,7 @@ def contact_traiter_donnees():
     # afficher : "Merci de m'avoir laissé un message !"
     return "else"
 """
+# 1 vue, multiple routes
 
 @app.route('/f_python')
 @app.route('/forum/python')
