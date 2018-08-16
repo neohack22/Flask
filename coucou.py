@@ -76,6 +76,8 @@ def debug():
     raise Exception('xyz')
     
 """
+# different views for different methods
+
 @app.route('/contact/', methods=['GET'])
 def contact_formulaire():
     #afficher le formulaire
