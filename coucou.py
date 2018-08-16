@@ -110,9 +110,10 @@ def mon_chat(num_page):
 """
 
 """
-# convert string to num
+# access 50 1st messages through '/discussion' address
 
 @app.route('/discussion/')
+# convert string to num
 @app.route('/discussion/page/<int:num_page>')
 def mon_chat(num_page = 1):
     premier_msg = 1 + 50 * (num_page - 1)
