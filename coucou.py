@@ -22,9 +22,11 @@ def ici():
 @app.route('/contact/', methods=['GET', 'POST'])
 def contact():
     if request.method == 'GET':
+        # if the user arrives to the page, the method will be GET
         # afficher le formulaire
         return "afficher le formulaire"
     else:
+        # If the user just validated the form, the method will be POST
         # traiter les données reçues
         # afficher : "Merci de m'avoir laissé un message !"
         return "Merci de m'avoir laissé un message !"
