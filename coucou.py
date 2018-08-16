@@ -115,6 +115,7 @@ def mon_chat(num_page):
 @app.route('/discussion/')
 # convert string to num
 @app.route('/discussion/page/<int:num_page>')
+# vue parameter as default value
 def mon_chat(num_page = 1):
     premier_msg = 1 + 50 * (num_page - 1)
     dernier_msg = premier_msg + 50
