@@ -99,6 +99,8 @@ def forum_python():
     return 'contenu forum python'
 
 """
+# Multiple personnalized routes/ vue
+
 @app.route('/discussion/page/<num_page>/')
 def mon_chat(num_page):
     num_page = int(num_page)
