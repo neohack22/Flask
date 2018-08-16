@@ -1,13 +1,14 @@
 #/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from flask import Flask, request
+from flask import Flask, request # HTTP request sent by client and received by server
 app = Flask(__name__)
 
 @app.route('/coucou/')
 def dire_coucou():
     return 'Coucou !'
 
+# The page path can be accessed through the path attribute
 
 @app.route('/')
 def racine():
@@ -110,10 +111,16 @@ def mon_chat(num_page = 1):
     return 'affichage des messages {} à {}'.format(premier_msg, dernier_msg)
 """
 
+# routes personnalisées
 @app.route('/discussion/page/<int:num_page>')
 def discussion(num_page):
     return 'Affichage de la page n°{num} de la discussion.'.format(num=num_page)
     
+"""    
+    url_for('discussion', num_page=3, truc='machin') # generate '/discussion/page/3?truc=machin'
+    url_for('discussion', num_page=12, truc='machin', age=20) # generate '/discussion/page/12?truc=machin&age=20'
+"""   
+
 @app.route('/afficher')
 @app.route('/afficher/mon_nom_est_<nom>_et_mon_prenom_<prenom>')
 def afficher(nom=None, prenom=None):
