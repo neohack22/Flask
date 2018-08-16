@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from flask import Flask, request # HTTP request sent by client and received by server
+from flask import make_response # create response from image
 
 app = Flask(__name__)
 
