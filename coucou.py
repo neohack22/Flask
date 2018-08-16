@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from flask import Flask, request # HTTP request sent by client and received by server
+
 app = Flask(__name__)
 
 @app.route('/coucou/')
@@ -141,16 +142,16 @@ def afficher(nom=None, prenom=None):
         return "Entrez votre nom et votre prénom comme il le faut dans l'url"
     return "Vous vous appelez {} {} !".format(prenom, nom)
 
-from PIL import Image
-from StringIO import StringIO
-
 # change mimetype
+
+from PIL import Image
+from io import BytesIO # iso from StringIO import StringIO
 
 @app.route('/image')
 def genere_image():
-    mon_image = StringIO()
+    mon_image = BytesIO()
     Image.new("RGB", (300,300), "#92C41D").save(mon_image, 'BMP')
-    return mon_image.getValue()
+    return mon_image.getvalue()
 
 if __name__ == '__main__':
     app.run(debug=True)
