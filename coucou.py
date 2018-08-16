@@ -110,6 +110,8 @@ def mon_chat(num_page):
 """
 
 """
+# convert string to num
+
 @app.route('/discussion/')
 @app.route('/discussion/page/<int:num_page>')
 def mon_chat(num_page = 1):
