@@ -132,6 +132,8 @@ def discussion(num_page):
     url_for('discussion', num_page=12, truc='machin', age=20) # generate '/discussion/page/12?truc=machin&age=20'
 """   
 
+# display variables in address
+
 @app.route('/afficher')
 @app.route('/afficher/mon_nom_est_<nom>_et_mon_prenom_<prenom>')
 def afficher(nom=None, prenom=None):
