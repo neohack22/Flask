@@ -141,5 +141,16 @@ def afficher(nom=None, prenom=None):
         return "Entrez votre nom et votre prénom comme il le faut dans l'url"
     return "Vous vous appelez {} {} !".format(prenom, nom)
 
+from PIL import Image
+from StringIO import StringIO
+
+# change mimetype
+
+@app.route('/image')
+def genere_image():
+    mon_image = StringIO()
+    Image.new("RGB", (300,300), "#92C41D").save(mon_image, 'BMP')
+    return mon_image.getValue()
+
 if __name__ == '__main__':
     app.run(debug=True)
