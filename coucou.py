@@ -172,10 +172,17 @@ def page_non_trouvee():
     return reponse
 """
 
+"""
 @app.route('/404')
 def page_non_trouvee():
     reponse = make_response("Cette page devrait vous avoir renvoyé une erreur 404", 404)
     return reponse
-    
+"""
+
+# 404 as tuple iso make_response()
+@app.route('/404/')
+def page_non_trouvee():
+    return "Cette page devrait vous avoir renvoyé une erreur 404", 404
+
 if __name__ == '__main__':
     app.run(debug=True)
