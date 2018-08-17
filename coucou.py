@@ -186,11 +186,19 @@ def page_non_trouvee():
     return "Cette page devrait vous avoir renvoyé une erreur 404", 404
 """
 
+"""
 # associates vue to error iso route
 @app.errorhandler(404)
     def ma_page_404(error):
         return "Ma jolie page 404", 404
+"""
 
+# unique view for several errors
+@app.errorhandler(401)
+@app.errorhandler(404)
+@app.errorhandler(500)
+def ma_page_errur(error):
+    return "Ma jolie page {}".format(error.code), error.code
 
 if __name__ == '__main__':
     app.run(debug=True)
