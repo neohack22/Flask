@@ -2,7 +2,6 @@
 # -*- coding:utf-8 -*-
 
 from flask import Flask, request # HTTP request sent by client and received by server
-from flask import make_response # create response from image
 
 app = Flask(__name__)
 
@@ -147,6 +146,11 @@ def afficher(nom=None, prenom=None):
 
 from PIL import Image
 from io import BytesIO # iso from StringIO import StringIO
+
+from flask import make_response # create response from image
+reponse = make_response(mon_image.getvalue())
+reponse.mimetype = "image/bmp" # à la place de "text/htlm"
+return reponse
 
 @app.route('/image')
 def genere_image():
