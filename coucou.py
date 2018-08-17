@@ -210,5 +210,10 @@ def profil():
         abort(401)
     return "Vous êtes bien identifié, voici la page demandée : ..."
 
+# redirect('route')
+@app.route('/google')
+def  redirection_google():
+    return redirect('http://www.google.fr')
+
 if __name__ == '__main__':
     app.run(debug=True)
