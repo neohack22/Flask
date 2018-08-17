@@ -148,15 +148,19 @@ from PIL import Image
 from io import BytesIO # iso from StringIO import StringIO
 
 from flask import make_response # create response from image
-reponse = make_response(mon_image.getvalue())
-reponse.mimetype = "image/bmp" # à la place de "text/htlm"
-return reponse
 
 @app.route('/image')
 def genere_image():
-    mon_image = BytesIO()
-    Image.new("RGB", (300,300), "#92C41D").save(mon_image, 'BMP')
-    return mon_image.getvalue()
+    mon_image = BytesIO() # creates object to store image in RAM
+    Image.new("RGB", (300,300), "#92C41D").save(mon_image, 'BMP') # generates image saved
+    # return mon_image.getvalue()
+    reponse = make_response(mon_image.getvalue()) # returns image stored
+    reponse.mimetype = "image/bmp" # à la place de "text/html"
+    return reponse
 
+@app.route('/404')
+def page_non_trouvee():
+    return "Cette page devrait vous renvoyer une erreur 404"
+    
 if __name__ == '__main__':
     app.run(debug=True)
