@@ -200,5 +200,15 @@ def page_non_trouvee():
 def ma_page_errur(error):
     return "Ma jolie page {}".format(error.code), error.code
 
+# emitting yourself HTTP errors
+
+from flask import abort
+
+@app.route('/profil')
+def profil():
+    if utilisateur_non_identifie:
+        abort(401)
+    return "Vous êtes bien identifié, voici la page demandée : ..."
+
 if __name__ == '__main__':
     app.run(debug=True)
