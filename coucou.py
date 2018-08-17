@@ -3,17 +3,27 @@
 
 from flask import Flask, request # HTTP request sent by client and received by server
 
+from flask import abort
+
 app = Flask(__name__)
 
 @app.route('/coucou/')
 def dire_coucou():
     return 'Coucou !'
 
+"""
 # The page path can be accessed through the path attribute
 
 @app.route('/')
 def racine():
     return "Le chemin de 'racine' est : " + request.path
+"""
+
+# return string
+
+@app.route('/')
+def accueil():
+    return "<h1>Bienvenue !</h1>"
 
 @app.route('/la/')
 def ici():
@@ -202,18 +212,58 @@ def ma_page_errur(error):
 
 # emitting yourself HTTP errors
 
-from flask import abort
+"""
+@app.route('/profil')
+def profil():
+    
+    if utilisateur_non_identifie:
+        abort(401)
+    
+    return "Vous êtes bien identifié, voici la page demandée : ..."
+"""
+
+# redirect('route')
+
+from flask import Flask,redirect, url_for
+
+@app.route('/google/')
+def  redirection_google():
+    return redirect('http://www.google.fr')
+
+"""
+# bad practice
 
 @app.route('/profil')
 def profil():
+    
     if utilisateur_non_identifie:
-        abort(401)
+        return redirect('/login')
+    
+    return "Vous êtes bien identifié, voici la pafe demandée : ..."
+
+@app.route('/login')
+def page_de_login():
+    # ...
+"""
+
+"""
+@app.route('/profil')
+def profil():
+    if utilisateur_non_identifie:
+        return redirect(url_for('page_de_login'))
     return "Vous êtes bien identifié, voici la page demandée : ..."
 
-# redirect('route')
-@app.route('/google')
-def  redirection_google():
-    return redirect('http://www.google.fr')
+@app.route('/login')
+def page de login():
+    # ...
+"""
+
+"""
+@app.route('/profil/<pseudo>')
+def afficher_profil(pseudo):
+    # ...
+    return redirect(url_for('afficher_profil', pseudo="Luc1664"))
+"""
 
 if __name__ == '__main__':
     app.run(debug=True)
