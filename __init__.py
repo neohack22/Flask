@@ -19,16 +19,17 @@ def racine():
     return "Le chemin de 'racine' est : " + request.path
 """
 
+"""
 # return string
 
 @app.route('/')
 def accueil():
-    """
+    
     return "<h1>Bienvenue !</h1>"
-    """
+    
     mots = ["bonjour", "à", "toi," "visiteur."]
     puces = ''.join("<li>{}</li>".format(m) for m in mots)
-    return """<!DOCTYPE html>
+    return <!DOCTYPE html>
         <html>
             <head>
                 <meta charset="utf-8" />
@@ -41,9 +42,15 @@ def accueil():
                     {puces}
                 </ul>
             </body>
-        </html>""".format(titre="Bienvenue !", puces=puces)
+        </html>.format(titre="Bienvenue !", puces=puces)
+"""
 
+from flask import render_template
 
+@app.route('/')
+def accueil():
+    return render_template('accueil.html')
+    
 @app.route('/la/')
 def ici():
     return "Le chemin de 'ici' est : " + request.path
