@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <link href="chemin/vers/mon_style.css" rel="stylesheet" type="text/css" /> -->
+        <!-- link href="{{ url_for('static', filename='mon_style.css') }}" rel="stylesheet" type="text/css" /> -->
+        <meta charset="utf-8" />
+        <title><!--{{ titre }}-->Accueil</title>
+    </head>
+
+    <body>
+        <h1><!--{{ titre }}-->Ceci est la page d'accueil.</h1>
+        <ul>
+        {% for mot in mots %}
+            <li>{{ mot }}</li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
+
+<!--
+    formations
+    vente par devs
+
+    offres :
+    - vente de projets
+        - forfaitisés engagés sur (moyens) coûts, délai et périmètre
+        tout écrire pour se blinder contre le critère qui refuse de payer de mauvaise foi
+    - régie : engagement de résultat (compétences en jh par exemple)
+        - unitaire
+        - structurée autour de team leader et groupe piloté intéractivement par le client
+        - régie forfaitisée : régie avec un minimum d'engagements
+    - expertise : audit, conseil, pompier
+        - audit
+        - livrable de 10 à 50 pages
+-->
