@@ -50,7 +50,7 @@ from flask import render_template
 @app.route('/')
 def accueil():
     return render_template('accueil.html')
-    
+
 @app.route('/la/')
 def ici():
     return "Le chemin de 'ici' est : " + request.path
@@ -291,5 +291,12 @@ def afficher_profil(pseudo):
     return redirect(url_for('afficher_profil', pseudo="Luc1664"))
 """
 
+from datetime import date
+
+@app.route('/date')
+def date():
+    d = date.today().isoformat()
+    return render_template('accueil.html', la_date=d)
+    
 if __name__ == '__main__':
     app.run(debug=True)
